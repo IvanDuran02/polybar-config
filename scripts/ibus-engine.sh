@@ -10,9 +10,9 @@ IBUS_LAYOUT_VARIANT=`echo $IBUS_RAW | awk -F ':' '{print $3}'`
 IBUS_LANG=`echo $IBUS_RAW | awk -F ':' '{print $4}'`
 
 # Change me! use any icons you like
-ENGINE_ICON=
+ENGINE_ICON=
 LAYOUT_ICON=
-LANG_ICON=
+LANG_ICON=
 LOCK_ICON=
 
 # if [ -z "${IBUS_LAYOUT}" ] || [ "${IBUS_LAYOUT}" = "\n" ]
