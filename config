@@ -52,7 +52,7 @@ separator-foreground = ${colors.disabled}
 font-0 = JetBrainsMonoNerdFont;2
 
 modules-left = xworkspaces xwindow
-modules-right = filesystem pulseaudio xkeyboard memory cpu wlan eth date
+modules-right = filesystem pulseaudio ibus memory cpu eth date
 
 cursor-click = pointer
 cursor-scroll = ns-resize
@@ -118,17 +118,29 @@ label-muted = muted
 label-muted-foreground = ${colors.disabled}
 
 ; Module shows current language selected -- I'll probably re-enable it sometime in the future...
-; [module/xkeyboard]
-; type = internal/xkeyboard
-; blacklist-0 = num lock
-;
-; label-layout = %layout%
-; label-layout-foreground = ${colors.primary}
-;
-; label-indicator-padding = 2
-; label-indicator-margin = 1
-; label-indicator-foreground = ${colors.background}
-; label-indicator-background = ${colors.secondary}
+[module/xkeyboard]
+type = internal/xkeyboard
+blacklist-0 = num lock
+
+label-layout = %layout%
+label-layout-foreground = ${colors.primary}
+
+label-indicator-padding = 2
+label-indicator-margin = 1
+label-indicator-foreground = ${colors.background}
+label-indicator-background = ${colors.secondary}
+
+[module/ibus]
+type = custom/script
+
+exec = ~/.config/polybar/scripts/ibus-engine.sh &
+; you need to run ibus-daemon first for the script to work
+exec-if = pgrep -x ibus-daemon
+
+tail = true
+
+click-left = ~/.config/polybar/scripts/ibus-switch.sh &
+click-right = ~/.config/polybar/scripts/ibus-setting.sh &
 
 [module/memory]
 type = internal/memory
